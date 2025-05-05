@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
-from django.conf.global_settings import AUTH_USER_MODEL
+from django.conf.global_settings import AUTH_USER_MODEL, MEDIA_URL, MEDIA_ROOT, STATICFILES_DIRS, STATIC_ROOT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'manage_post.apps.ManagePostConfig',
     'user.apps.UserConfig',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,6 +125,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIR = [
+    'manage_post/static',
+    'user/static'
+]
+
+# Ubicación de los archivos estaticos
+STATIC_ROOT = BASE_DIR / 'static'
+
+# URl publica para los archivos media
+MEDIA_URL = '/media/'
+
+# Ubicacion del archivo media
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
